@@ -34,6 +34,7 @@ public class NotesBody extends Fragment {
     private String mParam1;
     private String mParam2;
     private Integer itemId;
+    private  Boolean isThereData = false;
 
     public NotesBody() {
         // Required empty public constructor
@@ -81,6 +82,7 @@ public class NotesBody extends Fragment {
             itemId = bundle.getInt("ID");
             noteTitle.setText(databaseHelper.getNoteTitle(itemId));
             noteBody.setText(databaseHelper.getNoteBody(itemId));
+            isThereData = true;
         }
 
         // Save
@@ -96,6 +98,10 @@ public class NotesBody extends Fragment {
 
                     boolean success = databaseHelper.addOne(notesModel);
                     Toast.makeText(getActivity(), "Save successful: " + success, Toast.LENGTH_SHORT).show();
+
+                    if(isThereData){
+                        databaseHelper.deleteOne(itemId);
+                    }
                 }
                 catch(Exception e){
                     Toast.makeText(getActivity(), "Please make sure both fields have been typed in", Toast.LENGTH_LONG).show();

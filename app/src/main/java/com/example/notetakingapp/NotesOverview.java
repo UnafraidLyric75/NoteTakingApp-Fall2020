@@ -98,11 +98,9 @@ public class NotesOverview extends Fragment {
         notesList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-                //String title = adapterView.getItemAtPosition(position).toString();
+                String mPosition = adapterView.getItemAtPosition(position).toString();
                 NotesBody notesBody = new NotesBody();
-
-                //Integer noteId = databaseHelper.getId(title);
-                Integer noteId = position;
+                Integer noteId = databaseHelper.getId(mPosition);
 
                 Bundle bundle = new Bundle();
                 bundle.putInt("ID", noteId);

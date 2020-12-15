@@ -52,9 +52,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public void deleteOne(int noteId){
         SQLiteDatabase db = this.getWritableDatabase();
-        String querryString = "DELETE FROM " + NOTES_TABLE + " WHERE " + COLUMN_ID + " = " + noteId;
+        String queryString = "DELETE FROM " + NOTES_TABLE + " WHERE " + COLUMN_ID + " = " + noteId;
 
-        db.execSQL(querryString);
+        db.execSQL(queryString);
         db.close();
     }
 
@@ -92,14 +92,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         // get data from the database
 
-        String queryString = "SELECT * FROM " + NOTES_TABLE;
+        String queryString = "SELECT * FROM " + NOTES_TABLE + " WHERE " + COLUMN_ID + " = " + noteID;
 
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursor = db.rawQuery(queryString, null);
 
-        cursor.moveToPosition(noteID);
-        result = cursor.getString(1);
+        if (cursor.moveToFirst()){
+            result = cursor.getString(1);
+        }
         cursor.close();
         db.close();
         return result;
@@ -110,14 +111,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         // get data from the database
 
-        String queryString = "SELECT * FROM " + NOTES_TABLE;
+        String queryString = "SELECT * FROM " + NOTES_TABLE + " WHERE " + COLUMN_ID + " = " + noteID;
 
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursor = db.rawQuery(queryString, null);
 
-        cursor.moveToPosition(noteID);
-        result = cursor.getString(2);
+        if (cursor.moveToFirst()){
+            result = cursor.getString(2);
+        }
         cursor.close();
         db.close();
         return result;
@@ -125,21 +127,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public Integer getId(String title){
         Integer result = null;
-        String sResult = null;
 
         // get data from the database
 
-        String queryString = "SELECT * FROM " + NOTES_TABLE;
+        String queryString = "SELECT * FROM " + NOTES_TABLE + " WHERE " + COLUMN_NOTE_TITLE + " = '" + title + "'";
 
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursor = db.rawQuery(queryString, null);
 
         if (cursor.moveToFirst()){
-            do{
-                result = cursor.getInt(0);
-                sResult = cursor.getString(1);
-            } while (cursor.moveToNext() && sResult != title);
+            result = cursor.getInt(0);
         }
         cursor.close();
         db.close();
