@@ -5,55 +5,61 @@
     android:id="@+id/NotesBody"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".NotesBody" >
+    tools:context=".NotesBody">
 
     <EditText
         android:id="@+id/NoteTitle"
-        android:layout_width="378dp"
-        android:layout_height="52dp"
+        android:layout_width="301dp"
+        android:layout_height="45dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="48dp"
         android:layout_marginEnd="8dp"
+        android:autofillHints=""
         android:ems="10"
         android:hint="@string/note_title"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:autofillHints="" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/NoteBody"
-        android:layout_width="378dp"
-        android:layout_height="483dp"
+        android:layout_width="317dp"
+        android:layout_height="79dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="4dp"
+        android:autofillHints=""
         android:ems="10"
         android:hint="@string/note_goes_here"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.515"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/NoteTitle"
-        app:layout_constraintVertical_bias="0.0"
-        android:autofillHints="" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/btnSave"
-        android:layout_width="200dp"
-        android:layout_height="50dp"
+        android:layout_width="110dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="4dp"
         android:text="@string/save"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btnDelete"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/NoteBody" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btnDelete"
-        android:layout_width="200dp"
-        android:layout_height="50dp"
+        android:layout_width="91dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="4dp"
         android:text="@string/delete"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btnSave"
-        app:layout_constraintTop_toBottomOf="@+id/NoteBody" />
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
